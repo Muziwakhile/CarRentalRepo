@@ -95,7 +95,7 @@ namespace CarRental3.Controllers
                     booking.Name = result.Name;
                     name = result.Name;
                     surname = result.Surname;
-                    sendto = "muzi@dnet.co.sz";
+                    sendto = ConfigurationManager.AppSettings["AdminMail"].ToString(); ;
                      _user = result.UserName;
                 }
 
@@ -123,26 +123,26 @@ namespace CarRental3.Controllers
                     entities.SaveChanges();
 
                 
-                    string message = $"<p>Dear Admin <br /><br />{name} {surname} has reserverd a car. please see booking Details Below<br />Booking ID:{bk.Booking_Id} <br /><br /> User : {_user}<br />Date From {booking.DateFrom} To {booking.DateTo}<br />Car Registration {carResult.Registration}<br /><br />regards<br /><br /> {name} {surname} </p>";
-                    string Mailsubject = "Car Reservation";
+                    //string message = $"<p>Dear Admin <br /><br />{name} {surname} has reserverd a car. please see booking Details Below<br />Booking ID:{bk.Booking_Id} <br /><br /> User : {_user}<br />Date From {booking.DateFrom} To {booking.DateTo}<br />Car Registration {carResult.Registration}<br /><br />regards<br /><br /> {name} {surname} </p>";
+                    //string Mailsubject = "Car Reservation";
                     
-                    string mailFrom =  ConfigurationManager.AppSettings["EmailFrom"].ToString();
-                    string password = ConfigurationManager.AppSettings["EmailPass"].ToString();
-                    string host = ConfigurationManager.AppSettings["Host"].ToString();
-                    int port = int.Parse(ConfigurationManager.AppSettings["Port"].ToString());
+                    //string mailFrom =  ConfigurationManager.AppSettings["EmailFrom"].ToString();
+                    //string password = ConfigurationManager.AppSettings["EmailPass"].ToString();
+                    //string host = ConfigurationManager.AppSettings["Host"].ToString();
+                    //int port = int.Parse(ConfigurationManager.AppSettings["Port"].ToString());
 
-                    SmtpClient client = new SmtpClient(host, port);
-                    client.EnableSsl = true;
-                    client.Timeout = 100000;
-                    client.DeliveryMethod = SmtpDeliveryMethod.Network;
-                    client.UseDefaultCredentials = false;
-                    client.Credentials = new NetworkCredential(mailFrom, password);
+                    //SmtpClient client = new SmtpClient(host, port);
+                    //client.EnableSsl = true;
+                    //client.Timeout = 100000;
+                    //client.DeliveryMethod = SmtpDeliveryMethod.Network;
+                    //client.UseDefaultCredentials = false;
+                    //client.Credentials = new NetworkCredential(mailFrom, password);
 
-                    MailMessage mailMessage = new MailMessage(mailFrom,sendto,Mailsubject,message);
-                    mailMessage.IsBodyHtml = true;
-                    mailMessage.BodyEncoding = UTF8Encoding.UTF8;
+                    //MailMessage mailMessage = new MailMessage(mailFrom,sendto,Mailsubject,message);
+                    //mailMessage.IsBodyHtml = true;
+                    //mailMessage.BodyEncoding = UTF8Encoding.UTF8;
 
-                    client.Send(mailMessage);
+                    //client.Send(mailMessage);
                     
 
                     return RedirectToAction("Index", "Home");
