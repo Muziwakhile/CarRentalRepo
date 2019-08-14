@@ -1,0 +1,89 @@
+﻿@model IEnumerable<CarRental3.Models.CarModel>
+
+@{
+    ViewBag.Title = "Trucks";
+}
+
+<h2>Trucks</h2>
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+<div class="row">
+
+    @foreach (var item in Model)
+    {
+        <div class=" col-xs-12 offset-2 col-sm-12 offset-sm-3 col-md-6 offset-md-0 col-lg-4 mb-2 " id="cards">
+            <div class="card" style="width: 18rem;">
+
+                <img id="d" class="img-thumbnail" src=@Url.Action("RetrieveImage","ViewCars", new { Id = item.ID}) alt="Car Image" style="height:190px; width:286px;" />
+
+                <div class="card-body">
+                    <h5 class="card-title">@item.Brand @item.Model </h5>
+                    <h6 class="card-title">@item.SeatsNumber Seater </h6>
+                    <p class="card-text">@item.Description</p>
+                    <a href="@Url.Action("Create","Booking",new { id = item.ID })" class="btn btn-primary">Book this car</a>
+                    @*@Html.ActionLink("Book This Car", "Book", "BookCars", new { id = item.ID, @Class = "btn btn-primary" })*@
+                </div>
+            </div>
+        </div>
+    }
+</div>
+@*<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Registration)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Brand)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Model)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SeatsNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CarCategory)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CarStatus)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Registration)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Brand)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Model)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SeatsNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CarCategory)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CarStatus)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>*@

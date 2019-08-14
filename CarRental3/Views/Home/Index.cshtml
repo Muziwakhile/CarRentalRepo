@@ -1,0 +1,69 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Rent With Us The Suitable Vehicle For Your Occasion</h1>
+    <p class="lead">Choose the category suitable for you and make reservation now...</p>
+    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Rent Now &raquo;</a></p>
+</div>
+
+<div class="row">
+    <div class=" col-xs-12 offset-2 col-sm-12 offset-sm-3 col-md-6 offset-md-0 col-lg-4 mb-2 " id="cards">
+        <div class="card" style="width: 18rem;">
+
+            <img class="card-img" src="~/Images/219622.jpg" />
+
+            <div class="card-body">
+                <h5 class="card-title">Sedan</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                @*<a href="@Url.Action("Sedans","ViewCars")" class="btn btn-primary">More......</a>*@
+                @Html.ActionLink(linkText:"More......",actionName:"Sedans",controllerName:"ViewCars",routeValues:null,htmlAttributes: new { @Class = "btn btn-primary" })
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 offset-2 col-sm-12 offset-sm-3  col-md-6 offset-md-0  col-lg-4 mb-2 " id="cards">
+        <div class="card" style="width: 18rem;">
+            <img class="card-img" src="~/Images/Lexus sedan.jpg" alt="Card image cap" style="height:190px" />
+            <div class="card-body">
+                <h5 class="card-title">Family Car</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                @*<a href="#" class="btn btn-primary">More......</a>*@
+                @Html.ActionLink(linkText: "More......", actionName: "FamilyCars", controllerName: "ViewCars", routeValues: null, htmlAttributes: new { @Class = "btn btn-primary" })
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12 offset-2 col-sm-12 offset-sm-3 col-md-12 offset-md-3 offset-lg-0 col-lg-4 mb-2 " id="cards">
+        <div class="card" style="width: 18rem;">
+
+            <img class="card-img" src="~/Images/mini truck.jpg" style="height:190px; width:286px;" />
+            <div class="card-body">
+                <h5 class="card-title">Trucks</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                @*<a href="#" class="btn btn-primary">More......</a>*@
+                @Html.ActionLink(linkText: "More......", actionName: "Trucks", controllerName: "ViewCars", routeValues: null, htmlAttributes: new { @Class = "btn btn-primary" })
+            </div>
+        </div>
+    </div>
+    @*<div class="col-md-4">
+            <h2>Getting started</h2>
+            <p>
+                ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
+                enables a clean separation of concerns and gives you full control over markup
+                for enjoyable, agile development.
+            </p>
+            <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>Get more libraries</h2>
+            <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
+            <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>Web Hosting</h2>
+            <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
+            <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+        </div>*@
+</div>

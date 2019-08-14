@@ -1,0 +1,174 @@
+﻿@model CarRental3.Models.CarDto
+
+@{
+    ViewBag.Title = "CreateCars";
+}
+
+<h2>Create Cars</h2>
+
+
+@using (Html.BeginForm("CreateCars", "Cars", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Registration, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Registration, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Registration, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Brand, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Brand, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Brand, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Model, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Model, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Model, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.SeatsNumber, htmlAttributes: new { @class = "control-label pl-3" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.SeatsNumber, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.SeatsNumber, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Create" class="btn btn-secondary" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.Description, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CarCategory_Id, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.CarCategory_Id, ViewData["Department"] as SelectList, "Select Department", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.CarCategory_Id, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CarStatus_Id, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.CarStatus_Id, ViewData["Status"] as SelectList, "Select Status", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.CarStatus_Id, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <input id="img" type="file" name="ImagePath" accept="image/jpeg,image/png" class="form-control" multiple   />
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-offset-2 col-md-10">
+                        <img id="d" class="img-thumbnail" alt="Car Image" style="height:190px; width:286px;" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-offset-2 col-md-10">
+                    <img class="img-thumbnail" src=@Url.Action("RetrieveImage","Cars", new { Id = Model.ID}) alt="Alternate Text" style="height:190px; width:286px;" />
+                </div>
+            </div>*@
+
+
+
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        //function myfunction(m) {
+        //    if (m.files && m.files[0]) {
+        //        var reader = new FileReader();
+        //        reader.onload = function (e) {
+        //            $('#d').attr('src', e.target.result)
+        //        }
+        //        reader.readAsDataURL(m.files[0]);
+        //    }
+        //}
+
+
+        //If you don't want to use the above method to preview tha image you can also uncomment the one bellow and then remove the onchange even in the image
+        //input
+
+        //$(document).ready(function () {
+        //    $('#img').change(function () {
+        //        var m = this.files
+        //        if (m && m[0]) {
+        //            var reader = new FileReader();
+        //            reader.onload = function (e) {
+        //                $('#d').attr('src', e.target.result)
+        //            }
+        //            reader.readAsDataURL(m[0]);
+        //        }
+        //    })
+        //})
+
+
+         $(document).ready(function () {
+             $('#img').change(function () {
+                 var file = this.files;
+                 var formData = new FormData();
+                 formData.append("image", file[0]);
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("RetrieveImage2", "Cars")',
+                    data: formData,
+                    contentType:false,
+                    processData: false,
+                    success: function () {
+                        var img = '@Url.Action("RetrieveImage3","Cars")';
+                        $('#d').attr('src', img);
+                        alert('succes!!');
+                    },
+                    error: function (error) {
+                        alert("errror");
+                    }
+                });
+            });
+        });
+
+    </script>
+
+}

@@ -1,0 +1,133 @@
+﻿@using Microsoft.AspNet.Identity
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+</head>
+<body class="m-0 p-0">
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+        <!-- Brand -->
+        < @Html.ActionLink(" Swazi Car Rental", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
+        <!-- Toggler/collapsibe Button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navbar links -->
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item"> @Html.ActionLink(linkText: "Home", actionName: "Index", controllerName: "Home", routeValues: new { area = "" }, htmlAttributes: new { @class = "nav-link" })</li>
+                <li class="nav-item"> @Html.ActionLink(linkText: "About", actionName: "About", controllerName: "Home", routeValues: new { area = "" }, htmlAttributes: new { @class = "nav-link" })</li>
+                <li class="nav-item"> @Html.ActionLink(linkText: "Contact", actionName: "Contact", controllerName: "Home", routeValues: new { area = "" }, htmlAttributes: new { @class = "nav-link" })</li>
+                <!-- Dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                        Car Category
+                    </a>
+                    <div class="dropdown-menu bg-white text-dark">
+                        <a class="dropdown-item" href="@Url.Action("Sedans","ViewCars")">Sedan</a>
+                        <a class="dropdown-item" href="@Url.Action("FamilyCars","ViewCars")">Family Cars</a>
+                        <a class="dropdown-item" href="@Url.Action("Trucks","ViewCars")">Trucks</a>
+                    </div>
+                </li>
+
+
+                @if (User.Identity.GetUserName() == "mbulelon@gmail.com")
+                {
+
+                    <li class="nav-item">@Html.ActionLink("View Cars", "Index", "Cars", routeValues: null, htmlAttributes: new { @class = "nav-link" })</li>
+                    <li class="nav-item">@Html.ActionLink("Create Cars", "CreateCars", "Cars", routeValues: null, htmlAttributes: new { @class = "nav-link" })</li>
+                    <li class="nav-item">@Html.ActionLink("View Bookings", "Index", "Booking", routeValues: null, htmlAttributes: new { @class = "nav-link" })</li>
+                }
+            </ul>
+            @Html.Partial("_LoginPartial")
+        </div>
+    </nav>
+    @*<div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    </ul>
+                    @Html.Partial("_LoginPartial")
+                </div>
+            </div>
+        </div>*@
+    <div id="demo" class="carousel slide" data-ride="carousel">
+
+        <!-- Indicators -->
+        <!--<ul class="carousel-indicators">
+            <li data-target="#demo" data-slide-to="0" class="active"></li>
+            <li data-target="#demo" data-slide-to="1"></li>
+            <li data-target="#demo" data-slide-to="2"></li>
+        </ul>-->
+        <!-- The slideshow -->
+        <div class="carousel-inner ">
+            <div class="carousel-item active">
+                <img id="image1" class="h-25 w-100" src="~/Images/horizon car.jpeg" alt="Los Angeles" style="background-size:cover">
+                <div class="carousel-caption " style="color:chocolate">
+                    <h1 class="text-info">Travel with us to your destination</h1>
+                    <h3 class="text-info text-lg-center">Enjoy a safe, comfortable and exciting journey with our well serviced and comfortable vehicles</h3>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    @*<div class="container body-content">*@
+    @RenderBody()
+    <hr />
+    <footer class="bg-dark text-light">
+        <div class="container">
+            <div class="col row text-center pt-3 ">
+                <div class="col-md-4">
+                    <h3>
+                        Company Info
+                    </h3>
+                    <p>
+                        We are a company that specialises in providing quality cars for the specific.<br />
+                        the company was established in 2005 and has since grown to provide all categoris of vehicles for rental, including trucks for moving large equipment
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <h3>
+                        Company Contact information
+                    </h3>
+                    <p>
+                        Email: <a href="mailto:info@rental.com">info@rental.com</a><br />
+                        Contact: 24050660
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <h3>
+                        Connect with us on
+                    </h3>
+                    <a href="#"><i class="fa fa-twitter-square  fa-3x"></i></a>
+                    <a href="#"><i class="fa fa-facebook-square fa-3x"></i></a>
+                    <a href="#"><i class="fa fa-linkedin-square fa-3x"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    @*</div>*@
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
